@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: "iticket-backend"
+  datasource:
+    url: jdbc:mysql://localhost:3306/iticketdb?useSSL=false&serverTimezone=UTC
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  #      database-platform: org.hibernate.dialect.MySQL8Dialect
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.3
+
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+
+server:
+  port: 8082
+
+
+  #database configurations
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+           client:
+             advisor: DEBUG
