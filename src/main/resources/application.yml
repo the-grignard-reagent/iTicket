@@ -2,7 +2,7 @@ spring:
   application:
     name: "iticket-backend"
   datasource:
-    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQL_DATABASE}?useSSL=false&serverTimezone=UTC
+    url: ${SPRING_DATASOURCE_URL}
     username: ${MYSQLUSER}
     password: ${MYSQLPASSWORD}
 
