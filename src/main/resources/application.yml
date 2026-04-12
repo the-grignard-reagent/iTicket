@@ -2,9 +2,9 @@ spring:
   application:
     name: "iticket-backend"
   datasource:
-    url: jdbc:mysql://localhost:3306/iticketdb?useSSL=false&serverTimezone=UTC
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}?useSSL=false&serverTimezone=UTC
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
 
   jpa:
     hibernate:
@@ -29,7 +29,7 @@ spring:
             initialize-schema: always
 
 server:
-  port: 8082
+  port: ${PORT_NO}
 
 
   #database configurations
