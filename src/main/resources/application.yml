@@ -1,6 +1,6 @@
 spring:
   application:
-    name: "iticket-backend"
+    name: "iticket"
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${MYSQLUSER}
@@ -40,5 +40,5 @@ logging:
       springframework:
         ai:
           chat:
-           client:
-             advisor: DEBUG
+            client:
+              advisor: DEBUG
