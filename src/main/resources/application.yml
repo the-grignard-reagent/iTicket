@@ -29,7 +29,7 @@ spring:
             initialize-schema: always
 
 server:
-  port: ${PORT_NO}
+  port: ${PORT}
 
 
   #database configurations
