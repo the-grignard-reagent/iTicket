@@ -3,10 +3,7 @@ package com.substring.iticket.iticket_backend.config;
 
 import org.slf4j.Logger;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
-import org.springframework.ai.chat.memory.MessageWindowChatMemory;
-import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,8 +19,16 @@ public class AiConfig {
 //    }
 
     @Bean
+    public ChatClient chatClient(ChatClient.Builder builder) {
 
-    //Removing for local datasource usage
+        logger.info("ChatClient has been created");
+
+        return builder
+                .defaultSystem("Summarize the response within 300 words.")
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .build();
+
+
 //    public ChatClient chatClient(ChatClient.Builder builder, JdbcChatMemoryRepository jdbcChatMemoryRepository){
 //
 //        var chatMemory = MessageWindowChatMemory.builder()
@@ -38,14 +43,5 @@ public class AiConfig {
 //                .defaultSystem("Summarize the response within 300 words.")
 //                .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(chatMemory).build())
 //                .build();
-//    }
-    public ChatClient chatClient(ChatClient.Builder builder) {
-
-        logger.info("ChatClient has been created");
-
-        return builder
-                .defaultSystem("Summarize the response within 300 words.")
-                .defaultAdvisors(new SimpleLoggerAdvisor())
-                .build();
     }
 }
