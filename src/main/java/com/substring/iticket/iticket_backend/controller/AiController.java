@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 @RestController
 @RequestMapping("/api/v1/iticket")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:5173")
+//@CrossOrigin("http://localhost:5173")
 public class AiController {
 
     private final AIService service;
