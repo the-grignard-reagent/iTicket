@@ -22,19 +22,30 @@ public class AiConfig {
 //    }
 
     @Bean
-    public ChatClient chatClient(ChatClient.Builder builder, JdbcChatMemoryRepository jdbcChatMemoryRepository){
 
-        var chatMemory = MessageWindowChatMemory.builder()
-                        .chatMemoryRepository(jdbcChatMemoryRepository)
-                        .maxMessages(10)
-                        .build();
+    //Removing for local datasource usage
+//    public ChatClient chatClient(ChatClient.Builder builder, JdbcChatMemoryRepository jdbcChatMemoryRepository){
+//
+//        var chatMemory = MessageWindowChatMemory.builder()
+//                        .chatMemoryRepository(jdbcChatMemoryRepository)
+//                        .maxMessages(10)
+//                        .build();
+//
+//        logger.info("ChatClient has been created");
+//        logger.info("Chat memory bean created, {}", chatMemory.getClass().getName());
+//
+//        return builder
+//                .defaultSystem("Summarize the response within 300 words.")
+//                .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(chatMemory).build())
+//                .build();
+//    }
+    public ChatClient chatClient(ChatClient.Builder builder) {
 
         logger.info("ChatClient has been created");
-        logger.info("Chat memory bean created, {}", chatMemory.getClass().getName());
 
         return builder
                 .defaultSystem("Summarize the response within 300 words.")
-                .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(chatMemory).build())
+                .defaultAdvisors(new SimpleLoggerAdvisor())
                 .build();
     }
 }
